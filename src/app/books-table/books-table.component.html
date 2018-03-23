@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>author</th>
+      <th>date</th>
+      <th>gender</th>
+      <th>isbn</th>
+      <th>users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of booksList">
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.date | date:'dd/MM/yyyy'}}</td>
+      <td>{{book.gender}}</td>
+      <td>{{book.isbn}}</td>
+      <td>{{book.users}}</td>
+    </tr>
+  </tbody>
+</table>
