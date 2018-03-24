@@ -1,0 +1,19 @@
+<p>
+  searcher works!
+</p>
+<div>
+  <input type="text" [(ngModel)]="text">
+  <div *ngFor="let option of options">
+    <label>
+      <input type="checkbox" name="options" value="{{option}}" [disabled]="disabled[option]" [checked]="optionsChecked.indexOf(option) >= 0"
+        (change)="updateOptions(option, $event)" /> {{option}}
+    </label>
+
+  </div>
+  <button type="button" [disabled]="optionsChecked.length === 0 || !text" (click)="search()">search</button>
+  <pre>
+
+    {{optionsMap | json}}
+  </pre>
+</div>
+<app-books-table [booksList]="books"></app-books-table>

@@ -11,9 +11,10 @@ import { BooksTableComponent } from './books-table/books-table.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { MaxTodayDirective } from './max-today.directive';
+import { SearcherComponent } from './searcher/searcher.component';
 
 @NgModule({
-  declarations: [AppComponent, BooksListComponent, BooksTableComponent, BookDetailComponent, AddBookComponent, MaxTodayDirective],
+  declarations: [AppComponent, BooksListComponent, BooksTableComponent, BookDetailComponent, AddBookComponent, MaxTodayDirective, SearcherComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [
     BooksService,
