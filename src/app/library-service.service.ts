@@ -61,9 +61,14 @@ export class LibraryService {
 
         const metadata = 'L' + isbn + gender + '                    ' + Math.round(date.getTime() / 1000);
 
-        const book = new Book(title, author, metadata, []);
-        this.books.splice(index, 1);
-        this.books.push(book);
+        this.books[index].title = title;
+        this.books[index].author = author;
+        this.books[index].metadata = metadata;
+        this.books[index].isbn = isbn;
+        this.books[index].gender = gender;
+        this.books[index].date = Math.round(date.getTime() / 1000);
+        this.books[index].title = title;
+
         resolve(true);
       }
     });
