@@ -15,7 +15,7 @@ export class LibraryService {
         resolve(true);
       });
     });
-  }
+  };
 
   getBooks = () => this.books;
 
@@ -23,14 +23,49 @@ export class LibraryService {
     this.books = [];
     for (let index = 0; index < libraryBooks.length; index++) {
       const element = libraryBooks[index];
-      const book = new Book(
-        element.title,
-        element.author,
-        element.metadata,
-        element.users
-      );
+      const book = new Book(element.title, element.author, element.metadata, element.users);
 
       this.books.push(book);
     }
-  }
+  };
+
+  addBook = (title: string, author: string, isbn: string, date: Date, gender: string) => {
+    return new Promise((resolve, reject) => {
+      while (gender.length < 12) {
+        gender += ' ';
+      }
+
+      const metadata = 'L' + isbn + gender + '                    ' + Math.round(date.getTime() / 1000);
+
+      const book = new Book(title, author, metadata, []);
+      this.books.push(book);
+      resolve(true);
+    });
+  };
+
+  editBook = (title: string, author: string, isbn: string, date: Date, gender: string, originalIsbn: string) => {
+    return new Promise((resolve, reject) => {
+      let index = -1;
+
+      const found = this.books.some((element, ind) => {
+        index = element.isbn === originalIsbn ? ind : index;
+        return element.isbn === originalIsbn;
+      });
+
+      if (!found) {
+        reject('not founded book');
+      } else {
+        while (gender.length < 12) {
+          gender += ' ';
+        }
+
+        const metadata = 'L' + isbn + gender + '                    ' + Math.round(date.getTime() / 1000);
+
+        const book = new Book(title, author, metadata, []);
+        this.books.splice(index, 1);
+        this.books.push(book);
+        resolve(true);
+      }
+    });
+  };
 }

@@ -6,17 +6,17 @@
       <th>date</th>
       <th>gender</th>
       <th>isbn</th>
-      <th>users</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of booksList">
-      <td>{{book.title}}</td>
+    <tr *ngFor="let book of booksList; index as ind">
+      <td>
+        <a routerLink="/book/{{book.isbn}}">{{book.title}}</a>
+      </td>
       <td>{{book.author}}</td>
       <td>{{book.date | date:'dd/MM/yyyy'}}</td>
       <td>{{book.gender}}</td>
       <td>{{book.isbn}}</td>
-      <td>{{book.users}}</td>
     </tr>
   </tbody>
 </table>

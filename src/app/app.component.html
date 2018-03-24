@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<nav>
+  <a routerLink="/list" routerLinkActive="active">list</a>
+  <a routerLink="/add" routerLinkActive="active">add book</a>
+</nav>
+<div>
+  <router-outlet></router-outlet>
 </div>
-<h2>Here are some links to help you start: </h2>
-<router-outlet></router-outlet>

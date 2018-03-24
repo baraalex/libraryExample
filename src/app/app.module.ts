@@ -8,10 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LibraryService } from './library-service.service';
 import { BooksTableComponent } from './books-table/books-table.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { MaxTodayDirective } from './max-today.directive';
 
 @NgModule({
-  declarations: [AppComponent, BooksListComponent, BooksTableComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  declarations: [AppComponent, BooksListComponent, BooksTableComponent, BookDetailComponent, AddBookComponent, MaxTodayDirective],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [
     BooksService,
     LibraryService,
