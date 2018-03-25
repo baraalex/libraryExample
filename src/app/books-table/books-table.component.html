@@ -1,4 +1,4 @@
-<table>
+<table class="books-table">
   <thead>
     <tr>
       <th>title</th>
@@ -17,6 +17,9 @@
       <td>{{book.date | date:'dd/MM/yyyy'}}</td>
       <td>{{book.gender}}</td>
       <td>{{book.isbn}}</td>
+    </tr>
+    <tr *ngIf="!booksList || booksList.length===0" class="books-table-empty">
+      <td colspan="5"> there is no books</td>
     </tr>
   </tbody>
 </table>

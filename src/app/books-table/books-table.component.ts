@@ -4,7 +4,7 @@ import { Book } from '../book';
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
-  styleUrls: ['./books-table.component.css']
+  styleUrls: ['./books-table.component.less']
 })
 export class BooksTableComponent implements OnInit {
   @Input() booksList: Book[];

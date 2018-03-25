@@ -1,0 +1,53 @@
+.book-detail {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  dl {
+    margin-bottom: 50px;
+    border-collapse: collapse;
+
+    dt {
+      background: #5f9be3;
+      color: #fff;
+      float: left;
+      font-weight: bold;
+      margin-right: 10px;
+      padding: 5px;
+      text-align: right;
+      text-transform: capitalize;
+      width: 100px;
+      &::after {
+        content: ':';
+      }
+      &::selection {
+        background: #28a745;
+      }
+    }
+    dd {
+      margin: 2px 0;
+      min-width: 17em;
+      padding: 5px 0;
+    }
+  }
+
+  .book-edit-button {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    &:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  }
+}

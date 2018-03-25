@@ -6,7 +6,7 @@ import { element } from 'protractor';
 @Component({
   selector: 'app-searcher',
   templateUrl: './searcher.component.html',
-  styleUrls: ['./searcher.component.css']
+  styleUrls: ['./searcher.component.less']
 })
 export class SearcherComponent implements OnInit {
   text = '';

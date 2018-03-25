@@ -1,0 +1,53 @@
+<form action="" autocomplete="off" class="book-form" (ngSubmit)="submit()" #bookForm="ngForm">
+  {{diagnostic}}
+  <div class="form-group">
+    <label for="title">title</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required [(ngModel)]="book.title"
+      #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" class="error">
+      Title is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="author">author</label>
+    <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required [(ngModel)]="book.author"
+      #author="ngModel">
+    <div [hidden]="author.valid || author.pristine" class="error">
+      Author is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="isbn">isbn</label>
+    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter isbn" required minlength="17" maxlength="17"
+      pattern="[0-9]{3}\-[0-9]\-[0-9]{3}\-[0-9]{5}\-[0-9]" appIsbnValidator [activeFilter]="!originalIsbn || book.isbn!==originalIsbn"
+      [(ngModel)]="book.isbn" #isbn="ngModel">
+    <div [hidden]="isbn.valid || isbn.pristine || !isbn.errors.required" class="error">
+      Isbn is required
+    </div>
+    <div [hidden]="isbn.valid || isbn.pristine || !isbn.errors.pattern" class="error">
+      Isbn error on format. format should be 123-4-567-89012-3
+    </div>
+    <div [hidden]="isbn.valid || isbn.pristine || !isbn.errors.isbn" class="error">
+      Isbn already exists
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="gender">gender</label>
+    <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender" required maxlength="12" [(ngModel)]="book.gender"
+      #gender="ngModel">
+    <div [hidden]="gender.valid || gender.pristine" class="error">
+      Gender is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="date">date</label>
+    <input type="date" class="form-control" id="date" name="date" placeholder="Enter date" required appMaxToday [(ngModel)]="book.date"
+      #date="ngModel">
+    <div [hidden]="date.valid || date.pristine" class="error">
+      Max date is today
+    </div>
+  </div>
+
+  <button type="submit" class="book-form-submit" [disabled]="!bookForm.form.valid">submit</button>
+  <button type="button" class="book-form-cancel" *ngIf="showCancel" (click)="cancel()">cancel</button>
+</form>

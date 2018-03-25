@@ -9,9 +9,10 @@ export function MaxTodayValidator(): ValidatorFn {
     today.setHours(0);
     today.setSeconds(0);
     today.setMinutes(0);
+    today.setDate(today.getDate() + 1);
 
     const afterToday = today < dateForm;
-    return afterToday ? { dateError: { value: control.value } } : null;
+    return afterToday ? { date: { value: control.value } } : null;
   };
 }
 

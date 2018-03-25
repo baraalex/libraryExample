@@ -6,13 +6,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-book-detail',
   templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  styleUrls: ['./book-detail.component.less']
 })
 export class BookDetailComponent implements OnInit {
   books: Book[];
+  book: Book;
   bookSelected: Book;
-  edit: false;
-  dateFormated: string;
+  edit = false;
   isbnOriginal: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private library: LibraryService) {}
@@ -23,29 +23,28 @@ export class BookDetailComponent implements OnInit {
 
     this.books.some(element => {
       if (element.isbn === isbn) {
+        this.book = element;
         this.bookSelected = new Book(element.title, element.author, element.metadata, element.users);
         this.isbnOriginal = element.isbn;
-        this.dateFormated = new Date(element.date).toISOString().substring(0, 10);
         return true;
       }
     });
   }
 
-  editBook = () => {
+  editBook = (bookEdited: Book) => {
     this.library
-      .editBook(
-        this.bookSelected.title,
-        this.bookSelected.author,
-        this.bookSelected.isbn,
-        new Date(this.dateFormated),
-        this.bookSelected.gender,
-        this.isbnOriginal
-      )
+      .editBook(bookEdited.title, bookEdited.author, bookEdited.isbn, new Date(bookEdited.date), bookEdited.gender, this.isbnOriginal)
       .then(
         result => {
-          this.router.navigate(['/list']);
+          this.router.navigate(['/book/' + bookEdited.isbn]);
+          this.edit = false;
         },
         error => {}
       );
+  };
+
+  cancel = () => {
+    this.edit = false;
+    this.bookSelected = new Book(this.book.title, this.book.author, this.book.metadata, this.book.users);
   };
 }

@@ -12,9 +12,11 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { MaxTodayDirective } from './max-today.directive';
 import { SearcherComponent } from './searcher/searcher.component';
+import { BookFormComponent } from './book-form/book-form.component';
+import { IsbnValidatorDirective } from './isbn-validator.directive';
 
 @NgModule({
-  declarations: [AppComponent, BooksListComponent, BooksTableComponent, BookDetailComponent, AddBookComponent, MaxTodayDirective, SearcherComponent],
+  declarations: [AppComponent, BooksListComponent, BooksTableComponent, BookDetailComponent, AddBookComponent, MaxTodayDirective, SearcherComponent, BookFormComponent, IsbnValidatorDirective],
   imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [
     BooksService,

@@ -1,53 +1,27 @@
-{{bookSelected | json}}
-{{dateFormated}}
-{{isbnOriginal}}
-<div *ngIf="!edit">
-    <dl>
-        <dt>title</dt>
-        <dd>{{bookSelected.title}}</dd>
-        <dt>author</dt>
-        <dd>{{bookSelected.author}}</dd>
-        <dt>gender</dt>
-        <dd>{{bookSelected.gender}}</dd>
-        <dt>isbn</dt>
-        <dd>{{bookSelected.isbn}}</dd>
-        <dt>date</dt>
-        <dd>{{bookSelected.date | date:'dd/MM/yyyy'}} {{bookSelected.date}} {{dateFormated}}</dd>
-        <dt>users</dt>
-        <dd>
-            <p *ngFor="let user of bookSelected.users">{{user.name}}</p>
-        </dd>
-    </dl>
-    <button type="button" (click)="edit=true">edit</button>
-</div>
+<div class="book-detail">
+    <div *ngIf="!edit">
+        <dl>
+            <dt>title</dt>
+            <dd>{{book.title}}</dd>
+            <dt>author</dt>
+            <dd>{{book.author}}</dd>
+            <dt>gender</dt>
+            <dd>{{book.gender}}</dd>
+            <dt>isbn</dt>
+            <dd>{{book.isbn}}</dd>
+            <dt>date</dt>
+            <dd>{{book.date | date:'dd/MM/yyyy'}}</dd>
+            <dt>users</dt>
+            <dd>
+                <span *ngFor="let user of book.users; last as isLast">{{user.name}}
+                    <span *ngIf="!isLast">, </span>
+                </span>
+            </dd>
+        </dl>
+        <button type="button" class="book-edit-button" (click)="edit=true">edit</button>
+    </div>
 
-<div *ngIf="edit">
-    <form action="" (ngSubmit)="editBook()" #bookForm="ngForm">
-        <div class="form-group">
-            <label for="title">title</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required [(ngModel)]="bookSelected.title">
-        </div>
-        <div class="form-group">
-            <label for="author">author</label>
-            <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required [(ngModel)]="bookSelected.author">
-        </div>
-        <div class="form-group">
-            <label for="isbn">isbn</label>
-            <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter isbn" required minlength="17" maxlength="17"
-                pattern="[0-9]{3}\-[0-9]\-[0-9]{3}\-[0-9]{5}\-[0-9]" [(ngModel)]="bookSelected.isbn" #isbn="ngModel">
-            <div [hidden]="isbn.valid || isbn.pristine" class="alert alert-danger">
-                Name is required
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="gender">gender</label>
-            <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender" required maxlength="12" [(ngModel)]="bookSelected.gender">
-        </div>
-        <div class="form-group">
-            <label for="date">date</label>
-            <input type="date" class="form-control" id="date" name="date" placeholder="Enter date" required appMaxToday [(ngModel)]="dateFormated">
-        </div>
+    <app-book-form [book]="bookSelected" [originalIsbn]="isbnOriginal" showCancel="true" (onSubmit)="editBook($event)" (onCancel)="cancel()"
+        *ngIf="edit"></app-book-form>
 
-        <button type="submit" [disabled]="!bookForm.form.valid">submit</button>
-    </form>
 </div>

@@ -66,7 +66,7 @@ export class LibraryService {
         this.books[index].metadata = metadata;
         this.books[index].isbn = isbn;
         this.books[index].gender = gender;
-        this.books[index].date = Math.round(date.getTime() / 1000);
+        this.books[index].date = date.toISOString().substring(0, 10);
         this.books[index].title = title;
 
         resolve(true);

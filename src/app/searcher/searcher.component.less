@@ -1,0 +1,35 @@
+.books-search {
+  margin-bottom: 3rem;
+  .books-search-button {
+    background-color: #2894a7;
+    border: 1px solid #2894a7;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    &:hover {
+      background-color: #214588;
+      border-color: #1e5b7e;
+    }
+    &:disabled {
+      background-color: #b6b6b6;
+      border-color: #b6b6b6;
+      cursor: not-allowed;
+    }
+  }
+  .books-search-filters-container {
+    margin-top: 0.55rem;
+    .books-search-filters {
+      display: inline-block;
+      text-transform: capitalize;
+    }
+  }
+}

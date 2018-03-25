@@ -1,0 +1,79 @@
+.book-form {
+  display: block;
+  margin: 0 auto;
+  width: 15rem;
+  @media (min-width: 768px) {
+    width: 30rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .error {
+    color: #c82333;
+  }
+  input {
+    &:not(.ng-pristine) {
+      &.ng-valid[required],
+      &.ng-valid.required {
+        border-left: 5px solid #42a948; /* green */
+      }
+
+      &.ng-invalid:not(form) {
+        border-left: 5px solid #a94442; /* red */
+      }
+    }
+  }
+
+  .book-form-submit,
+  .book-form-cancel {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    &:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+    &:disabled {
+      background-color: #b6b6b6;
+      border-color: #b6b6b6;
+      cursor: not-allowed;
+    }
+  }
+  .book-form-cancel {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    &:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+  }
+}

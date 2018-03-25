@@ -1,9 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav>
+<header class="navigate-bar">
+  <a class="navigate-bar-title" routerLink="/">library</a>
+
   <a routerLink="/list" routerLinkActive="active">list</a>
   <a routerLink="/add" routerLinkActive="active">add book</a>
   <a routerLink="/search" routerLinkActive="active">search</a>
-</nav>
-<div>
+</header>
+<div class="content">
   <router-outlet></router-outlet>
 </div>
