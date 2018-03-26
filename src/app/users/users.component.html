@@ -1,0 +1,11 @@
+<div class="user" *ngIf="user">
+  <h1>
+    {{user.name}}
+  </h1>
+
+  <ul class="books-viewed">
+    <li *ngFor="let book of books" routerLink="/book/{{book.isbn}}">
+      {{book.title}}
+    </li>
+  </ul>
+</div>

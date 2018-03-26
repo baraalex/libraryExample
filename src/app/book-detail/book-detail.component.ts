@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-detail.component.less']
 })
 export class BookDetailComponent implements OnInit {
+  private isbn: string;
   books: Book[];
   book: Book;
   bookSelected: Book;
@@ -18,12 +19,11 @@ export class BookDetailComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private library: LibraryService) {}
 
   ngOnInit() {
-    let isbn;
-    this.route.paramMap.subscribe(pmap => (isbn = pmap.get('id')));
+    this.route.paramMap.subscribe(pmap => (this.isbn = pmap.get('id')));
     this.books = this.library.getBooks();
 
     this.books.some(element => {
-      if (element.isbn === isbn) {
+      if (element.isbn === this.isbn) {
         this.book = element;
         this.bookSelected = new Book(element.title, element.author, element.metadata, element.users);
         this.isbnOriginal = element.isbn;

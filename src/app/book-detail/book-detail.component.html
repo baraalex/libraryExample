@@ -13,9 +13,9 @@
             <dd>{{book.date | date:'dd/MM/yyyy'}}</dd>
             <dt>users</dt>
             <dd>
-                <span *ngFor="let user of book.users; last as isLast">{{user.name}}
-                    <span *ngIf="!isLast">, </span>
-                </span>
+                <a *ngFor="let user of book.users; last as isLast" routerLink="/user/{{user.id}}">
+                    {{user.name}}<span *ngIf="!isLast">, </span>
+                </a>
             </dd>
         </dl>
         <button type="button" class="book-edit-button" (click)="edit=true">edit</button>

@@ -6,13 +6,15 @@ import { LibraryService } from '../library-service.service';
 import { NgModule, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SearcherComponent } from '../searcher/searcher.component';
+import { UsersComponent } from '../users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'list', component: BooksListComponent },
   { path: 'add', component: AddBookComponent },
   { path: 'search', component: SearcherComponent },
-  { path: 'book/:id', component: BookDetailComponent }
+  { path: 'book/:id', component: BookDetailComponent },
+  { path: 'user/:id', component: UsersComponent }
 ];
 
 @NgModule({
