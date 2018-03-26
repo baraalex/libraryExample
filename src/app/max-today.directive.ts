@@ -1,7 +1,7 @@
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn } from '@angular/forms';
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-export function MaxTodayValidator(): ValidatorFn {
+function MaxTodayValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
     const dateForm = new Date(control.value);
     const today = new Date();

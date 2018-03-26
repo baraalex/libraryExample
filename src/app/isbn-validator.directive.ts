@@ -3,7 +3,7 @@ import { Directive, Input, OnChanges, SimpleChanges, OnInit } from '@angular/cor
 import { LibraryService } from './library-service.service';
 import { Book } from './book';
 
-export function IsbnValidator(books: Book[]): ValidatorFn {
+function IsbnValidator(books: Book[]): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
     const found = books.some(element => element.isbn === control.value);
     return found ? { isbn: { value: control.value } } : null;

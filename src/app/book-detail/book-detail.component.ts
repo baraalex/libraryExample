@@ -18,7 +18,8 @@ export class BookDetailComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private library: LibraryService) {}
 
   ngOnInit() {
-    const isbn = this.route.snapshot.paramMap.get('id');
+    let isbn;
+    this.route.paramMap.subscribe(pmap => (isbn = pmap.get('id')));
     this.books = this.library.getBooks();
 
     this.books.some(element => {

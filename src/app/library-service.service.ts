@@ -34,8 +34,13 @@ export class LibraryService {
       while (gender.length < 12) {
         gender += ' ';
       }
+      let dateUnix = Math.round(date.getTime() / 1000).toString();
 
-      const metadata = 'L' + isbn + gender + '                    ' + Math.round(date.getTime() / 1000);
+      while (dateUnix.length < 15) {
+        dateUnix = '0' + dateUnix;
+      }
+
+      const metadata = 'L' + isbn + gender + '                    ' + dateUnix;
 
       const book = new Book(title, author, metadata, []);
       this.books.push(book);
@@ -58,16 +63,20 @@ export class LibraryService {
         while (gender.length < 12) {
           gender += ' ';
         }
+        let dateUnix = Math.round(date.getTime() / 1000).toString();
 
-        const metadata = 'L' + isbn + gender + '                    ' + Math.round(date.getTime() / 1000);
+        while (dateUnix.length < 15) {
+          dateUnix = '0' + dateUnix;
+        }
 
-        this.books[index].title = title;
-        this.books[index].author = author;
-        this.books[index].metadata = metadata;
-        this.books[index].isbn = isbn;
-        this.books[index].gender = gender;
+        const metadata = 'L' + isbn + gender + '                    ' + dateUnix;
+
+        this.books[index].title = title.trim();
+        this.books[index].author = author.trim();
+        this.books[index].metadata = metadata.trim();
+        this.books[index].isbn = isbn.trim();
+        this.books[index].gender = gender.trim();
         this.books[index].date = date.toISOString().substring(0, 10);
-        this.books[index].title = title;
 
         resolve(true);
       }
