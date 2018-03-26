@@ -21,7 +21,7 @@
         <button type="button" class="book-edit-button" (click)="edit=true">edit</button>
     </div>
 
-    <app-book-form [book]="bookSelected" [originalIsbn]="isbnOriginal" showCancel="true" (onSubmit)="editBook($event)" (onCancel)="cancel()"
+    <app-book-form [book]="bookSelected" [originalIsbn]="isbn" showCancel="true" (onSubmit)="editBook($event)" (onCancel)="cancel()"
         *ngIf="edit"></app-book-form>
 
 </div>

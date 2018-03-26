@@ -9,12 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-detail.component.less']
 })
 export class BookDetailComponent implements OnInit {
-  private isbn: string;
+  isbn: string;
   books: Book[];
   book: Book;
   bookSelected: Book;
   edit = false;
-  isbnOriginal: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private library: LibraryService) {}
 
@@ -26,7 +25,6 @@ export class BookDetailComponent implements OnInit {
       if (element.isbn === this.isbn) {
         this.book = element;
         this.bookSelected = new Book(element.title, element.author, element.metadata, element.users);
-        this.isbnOriginal = element.isbn;
         return true;
       }
     });
@@ -34,7 +32,7 @@ export class BookDetailComponent implements OnInit {
 
   editBook = (bookEdited: Book) => {
     this.library
-      .editBook(bookEdited.title, bookEdited.author, bookEdited.isbn, new Date(bookEdited.date), bookEdited.gender, this.isbnOriginal)
+      .editBook(bookEdited.title, bookEdited.author, bookEdited.isbn, new Date(bookEdited.date), bookEdited.gender, this.isbn)
       .then(
         result => {
           this.router.navigate(['/book/' + bookEdited.isbn]);

@@ -9,15 +9,6 @@ import { Book } from '../book';
   styleUrls: ['./add-book.component.less']
 })
 export class AddBookComponent implements OnInit {
-  data = {
-    title: '',
-    author: '',
-    isbn: '',
-    date: '',
-    gender: ''
-  };
-  title: string;
-
   book: Book;
 
   constructor(private router: Router, private library: LibraryService) {}
